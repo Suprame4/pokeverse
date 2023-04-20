@@ -1,8 +1,19 @@
 body {
   font-family: 'Rubik', sans-serif;
   font-weight: 300;
+  
 }
 
 h1 {
   font-weight: 800 !important;
+}
+
+
+.container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: space-between;
+  gap: 10px 30px;
+
 }
