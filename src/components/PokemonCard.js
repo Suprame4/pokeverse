@@ -7,15 +7,6 @@ import axios from "axios"
 function PokemonCard({ url, name }) {
 
   const [pokeStats, setPokeStats] = useState(null)
-  
-  /*const pokeRequest2 = async () => {
-    const res = await fetch(url)
-    const data = await res.json()
-
-    console.log("Results 2: ", data)
-
-    setPokeStats(data)
-  }*/
 
   useEffect(() => {
     const pokeRequest2 = async () => {
@@ -24,8 +15,7 @@ function PokemonCard({ url, name }) {
       console.log("RESULTS: ", res.data)
     }
     pokeRequest2()
-   
-  }, [])
+  }, [url])
 
   return (
     <div>
