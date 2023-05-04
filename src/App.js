@@ -2,7 +2,7 @@ import React from 'react';
 import {useState, useEffect} from 'react';
 import { Navigation } from './components/Navigation';
 import { PokemonCard } from './components/PokemonCard';
-import { InputGroup, Form } from 'react-bootstrap';
+import { InputGroup, Form, Col, Container, Row} from 'react-bootstrap';
 import "./styles.css"
 
 const LIMIT = 150;
@@ -42,17 +42,25 @@ function App() {
   return (
     <div data-testid="app">
       <Navigation />
-      <InputGroup>
-        <InputGroup.Text id="search-id">Search</InputGroup.Text>
-        <Form.Control 
-          placeholder="Name"
-          aria-label="Name"
-          aria-describedby="search-id"
-          onChange={handleChange}
-        />
-      </InputGroup>
 
-      <h1>Pokemon should appear here</h1>
+      <Container>
+        <Row className='mb-4'>
+          <Col sm='8' md='6' className='mx-auto'>
+            <InputGroup>
+              <InputGroup.Text id="search">Search</InputGroup.Text>
+              <Form.Control 
+              placeholder="Name"
+              aria-label="Name"
+              aria-describedby="search"
+              onChange={handleChange}
+          //alternative onChange
+          // onChange={(e) => setSearch(e.target.value)}
+              />
+            </InputGroup>
+          </Col>
+        </Row>
+
+
       <div class="container">
         {pokeFiltered.map(poke => {
           return (
@@ -60,6 +68,7 @@ function App() {
           )
         })}
       </div>
+      </Container>
     </div>
   );
 }
