@@ -15,18 +15,26 @@ function PokemonCard({ url, name }) {
       console.log("RESULTS: ", res.data)
     }
     pokeRequest2()
+    .catch(error => {
+      console.log(error)
+    })
   }, [url])
 
   return (
     <div>
-        <Card>
+        <Card style={{width: '18rem'}} className='mx-auto'>
           {/* Double check on the item?.item?.item syntax */}
-          <Card.Img src={pokeStats?.sprites?.front_default}/>
+          <Card.Img 
+            width='286'
+            height='286'
+            bg='dark'
+            variant='top'
+            src={pokeStats?.sprites?.front_default}/>
             <Card.Body>
               <Card.Title>
                 {name}
               </Card.Title> 
-              <Card.Text>
+              <Card.Text as="div"> 
                 Abilities: 
                   <ul>
                     {pokeStats?.abilities.map(ability => <li>{ability.ability.name} </li>)}
