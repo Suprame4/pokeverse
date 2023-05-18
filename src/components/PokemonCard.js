@@ -1,12 +1,15 @@
 import React from 'react';
-import {useState, useEffect} from 'react'
+import {useState, useEffect, useContext} from 'react'
 import Card from "react-bootstrap/Card"
+import Button from "react-bootstrap/Button"
 import axios from "axios"
-
+import {FavoritesContext} from '../FavoritesProvider'
 
 function PokemonCard({ url, name }) {
 
   const [pokeStats, setPokeStats] = useState(null)
+
+  const { favorites, addFavorite, removeFavorite} = useContext(FavoritesContext)
 
   useEffect(() => {
     const pokeRequest2 = async () => {
@@ -40,6 +43,15 @@ function PokemonCard({ url, name }) {
                     {pokeStats?.abilities.map(ability => <li>{ability.ability.name} </li>)}
                   </ul>
               </Card.Text>
+
+              {!(favorites.includes(name)) ? 
+              <Button variant="primary" onClick={() => addFavorite(pokeStats.name)}>
+                Add to Favorites {console.log(favorites)}
+              </Button> :
+              <Button variant="primary" onClick={() => removeFavorite(pokeStats.name)}>
+                Remove from Favorites
+              </Button>
+              }
             </Card.Body>
         </Card>
     </div>
